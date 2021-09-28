@@ -11,16 +11,41 @@ const Template: ComponentStory<typeof Button> = (args) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Grid autoFlow="column" h="full" w="full">
-      <Button size="md" onClick={toggleColorMode} colorScheme="gray" w="max">
+      <Button
+        size="md"
+        onClick={toggleColorMode}
+        colorScheme="gray"
+        w="max"
+        id="sup"
+        data-cy="gray-button"
+      >
         Hello
       </Button>
-      <Button size="md" onClick={toggleColorMode} colorScheme="olive" w="max">
+      <Button
+        size="md"
+        onClick={toggleColorMode}
+        colorScheme="olive"
+        w="max"
+        data-cy="olive-button"
+      >
         Hello
       </Button>
-      <Button size="md" onClick={toggleColorMode} colorScheme="slate" w="max">
+      <Button
+        size="md"
+        onClick={toggleColorMode}
+        colorScheme="slate"
+        w="max"
+        data-cy="slate-button"
+      >
         Hello
       </Button>
-      <Button size="md" onClick={toggleColorMode} colorScheme="sand" w="max">
+      <Button
+        size="md"
+        onClick={toggleColorMode}
+        colorScheme="sand"
+        w="max"
+        data-cy="sand-button"
+      >
         Hello
       </Button>
     </Grid>
