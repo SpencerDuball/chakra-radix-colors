@@ -61,7 +61,7 @@ describe("useThemedColor ", () => {
     };
 
     // render the scene
-    render(<MyReactElement />);
+    const { asFragment } = render(<MyReactElement />);
 
     // check that the light mode color is rendered
     expect(screen.getByRole("heading")).toHaveTextContent("tealA.4");
