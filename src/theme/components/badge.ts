@@ -1,10 +1,10 @@
 import { mode } from "@chakra-ui/theme-tools";
 import type { SystemStyleFunction } from "@chakra-ui/theme-tools";
-import { getColorPair, getResolvedColorPair } from "../../util/tools";
+import { getBaseColorPair, getResolvedColorPair } from "../../util/tools";
 
 const variantSolid: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     bg: mode(`${lightC}.9`, `${darkC}.9`)(props),
     color: mode(`white`, `defaultgrayDark.12`)(props),
@@ -13,7 +13,7 @@ const variantSolid: SystemStyleFunction = (props) => {
 
 const variantSubtle: SystemStyleFunction = (props) => {
   const { colorScheme: c, theme } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     bg: mode(`${lightC}.5`, `${darkC}.5`)(props),
     color: mode(`${lightC}.12`, `${darkC}.12`)(props),

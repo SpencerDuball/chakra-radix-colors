@@ -4,58 +4,63 @@ import type {
   PartsStyleFunction,
   StyleFunctionProps,
 } from "@chakra-ui/theme-tools";
-import { getColorPair } from "../../util/tools";
+import { getBaseColorPair } from "../../util/tools";
 
 function getBg(props: StyleFunctionProps): string {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getColorPair(c, theme);
-  return mode(`${lightBg}.5`, `${darkBg}.5`)(props);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
+  return mode(`${lightC}.5`, `${darkC}.5`)(props);
 }
 
 const variantSubtle: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
-    container: { bg: getBg(props) },
-    icon: { color: mode(`${lightBg}.9`, `${darkBg}.9`)(props) },
+    container: {
+      bg: getBg(props),
+      color: mode(`${lightC}.12`, `${lightC}.1`)(props),
+    },
+    icon: { color: mode(`${lightC}.9`, `${darkC}.9`)(props) },
   };
 };
 
 const variantLeftAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     container: {
-      borderStartColor: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      borderStartColor: mode(`${lightC}.9`, `${darkC}.9`)(props),
       bg: getBg(props),
+      color: mode(`${lightC}.12`, `${lightC}.1`)(props),
     },
     icon: {
-      color: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      color: mode(`${lightC}.9`, `${darkC}.9`)(props),
     },
   };
 };
 
 const variantTopAccent: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     container: {
-      borderTopColor: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      borderTopColor: mode(`${lightC}.9`, `${darkC}.9`)(props),
       bg: getBg(props),
+      color: mode(`${lightC}.12`, `${lightC}.1`)(props),
     },
     icon: {
-      color: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
+      color: mode(`${lightC}.9`, `${darkC}.9`)(props),
     },
   };
 };
 
 const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightBg, darkBg] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     container: {
-      bg: mode(`${lightBg}.9`, `${darkBg}.9`)(props),
-      color: mode(`white`, `defaultgray.12`)(props),
+      bg: mode(`${lightC}.9`, `${darkC}.9`)(props),
+      color: mode(`${lightC}.12`, `${lightC}.1`)(props),
     },
   };
 };

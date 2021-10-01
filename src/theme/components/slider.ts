@@ -4,7 +4,7 @@ import type {
   SystemStyleFunction,
 } from "@chakra-ui/theme-tools";
 import { mode } from "@chakra-ui/theme-tools";
-import { getColorPair } from "../../util/tools";
+import { getBaseColorPair } from "../../util/tools";
 
 const baseStyleTrack: SystemStyleFunction = (props) => {
   return {
@@ -24,7 +24,7 @@ const baseStyleThumb: SystemStyleFunction = (props) => {
 
 const baseStyleFilledTrack: SystemStyleFunction = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
 
   return {
     bg: mode(`${lightC}.9`, `${darkC}.9`)(props),

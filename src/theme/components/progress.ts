@@ -11,11 +11,11 @@ import type {
   SystemStyleObject,
   SystemStyleFunction,
 } from "@chakra-ui/theme-tools";
-import { getColorPair } from "../../util/tools";
+import { getBaseColorPair } from "../../util/tools";
 
 function filledStyle(props: StyleFunctionProps): SystemStyleObject {
   const { colorScheme: c, theme: t, isIndeterminate, hasStripe } = props;
-  const [lightC, darkC] = getColorPair(c, t);
+  const [lightC, darkC] = getBaseColorPair(c, t);
 
   const stripeStyle = mode(
     generateStripe(),

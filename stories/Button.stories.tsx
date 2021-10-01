@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Grid, Button, useColorMode } from "@chakra-ui/react";
+import { VStack, HStack, Divider, Text, useColorMode } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 export default {
   title: "Test/Button",
@@ -8,47 +9,97 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
   return (
-    <Grid autoFlow="column" h="full" w="full">
+    <VStack w="full">
       <Button
         size="md"
         onClick={toggleColorMode}
         colorScheme="gray"
         w="max"
-        id="sup"
-        data-cy="gray-button"
+        data-cy="toggle-mode-button"
       >
-        Hello
+        Toggle Mode
       </Button>
-      <Button
-        size="md"
-        onClick={toggleColorMode}
-        colorScheme="olive"
-        w="max"
-        data-cy="olive-button"
-      >
-        Hello
-      </Button>
-      <Button
-        size="md"
-        onClick={toggleColorMode}
-        colorScheme="slate"
-        w="max"
-        data-cy="slate-button"
-      >
-        Hello
-      </Button>
-      <Button
-        size="md"
-        onClick={toggleColorMode}
-        colorScheme="sand"
-        w="max"
-        data-cy="sand-button"
-      >
-        Hello
-      </Button>
-    </Grid>
+      <Divider />
+      <Text as="h1" fontWeight="bold">
+        Variant Prop
+      </Text>
+      <HStack>
+        <>
+          <VStack>
+            <Button colorScheme="teal" variant="solid">
+              Button
+            </Button>
+            <Button colorScheme="tealDark" variant="solid">
+              Button
+            </Button>
+          </VStack>
+          <VStack>
+            <Button colorScheme="lime" variant="solid">
+              Button
+            </Button>
+            <Button colorScheme="limeDark" variant="solid">
+              Button
+            </Button>
+          </VStack>
+        </>
+        <>
+          <VStack>
+            <Button colorScheme="crimson" variant="outline">
+              Button
+            </Button>
+            <Button colorScheme="crimsonDark" variant="outline">
+              Button
+            </Button>
+          </VStack>
+          <VStack>
+            <Button colorScheme="yellow" variant="outline">
+              Button
+            </Button>
+            <Button colorScheme="yellowDark" variant="outline">
+              Button
+            </Button>
+          </VStack>
+        </>
+        <>
+          <VStack>
+            <Button colorScheme="grass" variant="ghost">
+              Button
+            </Button>
+            <Button colorScheme="grassDark" variant="ghost">
+              Button
+            </Button>
+          </VStack>
+          <VStack>
+            <Button colorScheme="amber" variant="ghost">
+              Button
+            </Button>
+            <Button colorScheme="amberDark" variant="ghost">
+              Button
+            </Button>
+          </VStack>
+        </>
+        <>
+          <VStack>
+            <Button colorScheme="plum" variant="link">
+              Button
+            </Button>
+            <Button colorScheme="plumDark" variant="link">
+              Button
+            </Button>
+          </VStack>
+          <VStack>
+            <Button colorScheme="sky" variant="link">
+              Button
+            </Button>
+            <Button colorScheme="skyDark" variant="link">
+              Button
+            </Button>
+          </VStack>
+        </>
+      </HStack>
+    </VStack>
   );
 };
 
