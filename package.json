@@ -2,7 +2,9 @@
   "name": "chakra-radix-colors",
   "version": "1.0.0",
   "description": "This package provides the @radix-ui/colors in @chakra-ui with all necessary component overrides.",
-  "main": "index.js",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": ["dist/src"],
   "scripts": {
     "tsc:build": "tsc",
     "tsc:watch": "tsc -w",

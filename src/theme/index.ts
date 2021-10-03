@@ -47,7 +47,7 @@ const colors = Object.fromEntries(
 );
 
 // override the default styles
-const overrides = {
+export const overrides = {
   colors: {
     ...colors,
     defaultgray: {
