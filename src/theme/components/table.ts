@@ -1,15 +1,20 @@
 import { tableAnatomy as parts } from "@chakra-ui/anatomy";
 import { mode } from "@chakra-ui/theme-tools";
 import type { PartsStyleFunction } from "@chakra-ui/theme-tools";
-import { getColorPair } from "../../util/tools";
+import { getBaseColorPair } from "../../util/tools";
 
 const variantSimple: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
+
+  let color = mode("defaultgray.11", "defaultgrayDark.11")(props);
+  if (c.includes("Dark")) {
+    color = mode("defaultgrayDark.11", "defaultgray.11")(props);
+  }
 
   return {
     th: {
-      color: mode("defaultgray.11", "defaultgrayDark.11")(props),
+      color,
       borderColor: mode(`${lightC}.6`, `${darkC}.6`)(props),
     },
     td: {
@@ -23,18 +28,28 @@ const variantSimple: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantStripe: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
+
+  let thColor = mode("defaultgray.11", "defaultgrayDark.11")(props);
+  let captionColor = mode("defaultgrayDark.10", "defaultgray.10")(props);
+  let tdColor = mode("defaultgray.12", "white")(props);
+  if (c.includes("Dark")) {
+    thColor = mode("defaultgrayDark.11", "defaultgray.11")(props);
+    captionColor = mode("defaultgray.10", "defaultgrayDark.10")(props);
+    tdColor = mode("white", "defaultgray.12")(props);
+  }
 
   return {
     th: {
-      color: mode("defaultgray.11", "defaultgrayDark.11")(props),
+      color: thColor,
       borderColor: mode(`${lightC}.6`, `${darkC}.6`)(props),
     },
     td: {
       borderColor: mode(`${lightC}.6`, `${darkC}.6`)(props),
+      color: tdColor,
     },
     caption: {
-      color: mode("defaultgrayDark.10", "defaultgray.10")(props),
+      color: captionColor,
     },
     tbody: {
       tr: {

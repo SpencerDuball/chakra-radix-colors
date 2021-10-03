@@ -2,13 +2,14 @@ import { tabsAnatomy as parts } from "@chakra-ui/anatomy";
 import type {
   PartsStyleFunction,
   PartsStyleInterpolation,
+  StyleFunctionProps,
 } from "@chakra-ui/theme-tools";
 import { getColor, mode } from "@chakra-ui/theme-tools";
-import { getColorPair } from "../../util/tools";
+import { getBaseColorPair } from "../../util/tools";
 
 const variantLine: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
 
   return {
     tab: {
@@ -24,7 +25,7 @@ const variantLine: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantEnclosed: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     tab: {
       _selected: {
@@ -37,7 +38,7 @@ const variantEnclosed: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantEnclosedColored: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     tab: {
       bg: "none",
@@ -51,13 +52,13 @@ const variantEnclosedColored: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantSoftRounded: PartsStyleFunction<typeof parts> = (props) => {
   const { colorScheme: c, theme } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     tab: {
       color: "defaultgray.10",
       _selected: {
-        color: getColor(theme, `${lightC}.11`),
-        bg: getColor(theme, `${lightC}.4`),
+        color: mode(`${lightC}.11`, `${darkC}.11`)(props),
+        bg: mode(`${lightC}.4`, `${darkC}.4`)(props),
       },
     },
   };
@@ -65,7 +66,7 @@ const variantSoftRounded: PartsStyleFunction<typeof parts> = (props) => {
 
 const variantSolidRounded: PartsStyleFunction<typeof parts> = (props) => {
   const { theme, colorScheme: c } = props;
-  const [lightC, darkC] = getColorPair(c, theme);
+  const [lightC, darkC] = getBaseColorPair(c, theme);
   return {
     tab: {
       color: mode("defaultgray.10", "inherit")(props),
