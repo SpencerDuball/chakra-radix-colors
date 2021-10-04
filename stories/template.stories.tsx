@@ -3,10 +3,12 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import {
   VStack,
   HStack,
+  Text,
   Divider,
   Button,
   useColorMode,
 } from "@chakra-ui/react";
+import { useThemedColor } from "../src/index";
 
 export default {
   title: "Test/Example",
@@ -15,6 +17,7 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => {
   const { toggleColorMode } = useColorMode();
+  const c = useThemedColor();
   return (
     <VStack w="full">
       <Button
@@ -27,6 +30,9 @@ const Template: ComponentStory<typeof Button> = (args) => {
         Toggle Mode
       </Button>
       <Divider />
+      <Text bg={c("blue.4")} color={c("blue.9")}>
+        Hello
+      </Text>
     </VStack>
   );
 };
