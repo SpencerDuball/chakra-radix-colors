@@ -2,13 +2,17 @@
   "name": "chakra-radix-colors",
   "version": "0.1.2",
   "description": "This package provides the @radix-ui/colors in @chakra-ui with all necessary component overrides.",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "lib/cjs/src/index.js",
+  "module": "lib/esm/src/index.js",
+  "types": "lib/esm/src/index.d.ts",
   "files": [
-    "dist/src"
+    "lib/cjs/src",
+    "lib/esm/src"
   ],
   "scripts": {
-    "tsc:build": "tsc",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build": "npm run build:esm && npm run build:cjs",
     "tsc:watch": "tsc -w",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
