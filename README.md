@@ -114,7 +114,7 @@ const colors = {
 };
 
 // 3. Call `extendTheme` and pass your custom values
-const theme = extendTheme({
+export const theme = extendTheme({
   colors,
   components: {
     // here we can specify the component overrides, do you want
@@ -131,4 +131,8 @@ const theme = extendTheme({
   },
   config: overrides.config,
 });
+
+// 4. Remove the default chakra-ui colors, if we don't do this all of the
+// chakra colors will still be defined
+theme.colors = colors;
 ```
