@@ -9,8 +9,9 @@ import type { Dict } from "@chakra-ui/utils";
  * @param mode "light" | "dark"
  * @returns Function that accepts string of a color and returns the themed
  * color.
- * Ex: ("light")("blue.4") -> "blue.4";
- * Ex: ("dark")("blueA.5") -> "blueDarkA.5"
+ * @example
+ *   getThemedColor("light")("blue.4") // "blue.4";
+ *   getThemedColor("dark")("blueA.5") // "blueDarkA.5"
  */
 export const getThemedColor = (mode: string) => (color: string) => {
   const [base, index] = color.split(".");
@@ -35,10 +36,13 @@ export const getThemedColor = (mode: string) => (color: string) => {
 
 /**
  * Hook that returns a function, (color: string) => themedColor.
- * Where the themedColor of the function returned will change with the color mode:
- * Ex: ("light")("purple.8") -> "purple.8"; Ex: ("dark")("purple.8") -> "purpleDark.8"
+ * Where the themedColor of the function returned will change with the color mode.
  *
  * @returns Mode adaptive color function.
+ * @example
+ *   const c = useThemedColor();
+ *   c("blue.4") // blue.4 when light; blueDark.4 when dark
+ *
  */
 export function useThemedColor() {
   const { colorMode } = useColorMode();
@@ -50,11 +54,13 @@ export function useThemedColor() {
 /**
  * Returns a [lightBaseColor, darkBaseColor] tuple with the light and
  * dark colors of the input base color.
- * Ex: ("amberDarkA", theme) -> ["amberDarkA", "amberA"]
  *
  * @param color A base color string from theme. Ex: "teal"
  * @param theme The theme with radix-ui color palettes.
  * @returns A color tuple of the [lightBaseColor, darkBaseColor].
+ * @example
+ *   const [original, flipped] = getBaseColorPair("red", theme);
+ *   // returns ["red", "redDark"]
  */
 export const getBaseColorPair = (color: string, theme: Dict<any>) => {
   const [isDark, isA] = [color.includes("Dark"), color.includes("A")];
@@ -80,11 +86,13 @@ export const getBaseColorPair = (color: string, theme: Dict<any>) => {
 /**
  * Returns a [lightColor, darkColor] tuple with the light and
  * dark colors of the input color.
- * Ex: ("amberDarkA.3", theme) -> ["amberDarkA.3", "amberA.3"]
  *
  * @param color A color string from theme. Ex: "teal"
  * @param theme The theme with radix-ui color palettes.
  * @returns A color tuple of the resolved [lightColor, darkColor].
+ * @example
+ *   const [original, flipped] = getResolvedColorPair("amberA.7", theme);
+ *   // returns ["hsl(36 99.9% 46.2% / 0.612)", "hsl(34 99.6% 52.9% / 0.331)"]
  */
 export const getResolvedColorPair = (color: string, theme: Dict<any>) => {
   const [base, index] = color.split(".");
