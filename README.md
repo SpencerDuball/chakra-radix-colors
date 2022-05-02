@@ -1,3 +1,4 @@
+# This package has been moved to https://github.com/dub-stack/chakra-radix-colors (it has also been hit V1.0 over there too). I have decided to make @dub-stack (duball = dub shortened) as the permanent home for my open source work.
 <p align="center">
   <a href="https://www.radix-ui.com/colors">
     <img src="doc/images/radix-ui-logo.png" alt="radix-ui logo" height="50px" width="50px" />
